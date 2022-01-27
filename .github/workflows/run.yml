@@ -31,7 +31,6 @@ jobs:
           pip install datetime
           pip install requests
           pip install numpy
-          pip install json
       - 
         name: Test Selenium
         run: python message_board.py
