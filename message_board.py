@@ -30,9 +30,9 @@ driver = webdriver.Chrome(options=options, desired_capabilities=d)
 
 
 #from webdriver_manager.chrome import ChromeDriverManager
-d = DesiredCapabilities.CHROME
-d['goog:loggingPrefs'] = { 'performance': 'ALL' }
-driver = webdriver.Chrome(ChromeDriverManager().install(), desired_capabilities=d)
+#d = DesiredCapabilities.CHROME
+#d['goog:loggingPrefs'] = { 'performance': 'ALL' }
+#driver = webdriver.Chrome(ChromeDriverManager().install(), desired_capabilities=d)
 
 
 # In[95]:
