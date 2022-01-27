@@ -1,0 +1,45 @@
+name: run
+
+#on:
+#  schedule:
+#    - cron: '0 16 * * *'
+    
+on: [ workflow_dispatch ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - 
+        name: Checkout Repository
+        uses: actions/checkout@v2
+      - 
+        name: Setup Python
+        uses: actions/setup-python@v2
+      - 
+        name: Install Chrome
+        run: |
+          sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+          sudo apt update
+          sudo apt-get install google-chrome-stable
+      - 
+        name: Install Package
+        run: |
+          pip install chromedriver-binary==94.*
+          pip install selenium
+          pip install pandas
+          pip install datetime
+          pip install requests
+          pip install numpy
+      - 
+        name: Test Selenium
+        run: python message_board.py
+        
+      - name: Commit and Push
+        run: |
+          git config user.name "AnnaNishino"
+          git config user.email "anna.nishino@nex.nikkei.com"
+          git add .
+          git commit -m "update"
+          git pull --rebase
+          git push origin main
